@@ -31,6 +31,7 @@ ORDER BY e.emp_no;</code></pre>
 With a quick overview of the results from step 1, it was clear that employees were showing up on the list more than once.  The reason is that the titles table included previous titles and not just their most recient one.  It was necessary to order the titles by the from_date with the most recent date first, and then for only that title be included in the final table.  To make this possible, it was necessary to partition the list by the employee number and selct the first occurance.  The code was used to achive this objective.
 
 --Create table with only the most recent titles
+'''sql
 SELECT emp_no
 	, first_name
 	, last_name
@@ -51,6 +52,7 @@ FROM
 WHERE rn = 1
 ORDER BY emp_no;
 SELECT * FROM current_retiring_emp_w_title;
+'''
 
 #### 3: Determine number of employees retiring by title
 Based on the results provided in part 2 above, it was then easy to perform another query where I grouped the employees by title and counted the number of employees with that title.  The below code was used to achieve this objective:
