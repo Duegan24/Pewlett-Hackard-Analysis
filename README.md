@@ -31,7 +31,6 @@ ORDER BY e.emp_no;</code></pre>
 With a quick overview of the results from step 1, it was clear that employees were showing up on the list more than once.  The reason is that the titles table included previous titles and not just their most recient one.  It was necessary to order the titles by the from_date with the most recent date first, and then for only that title be included in the final table.  To make this possible, it was necessary to partition the list by the employee number and selct the first occurance.  The code was used to achive this objective.
 
 --Create table with only the most recent titles
-'''sql
 <pre><code>SELECT emp_no
 	, first_name
 	, last_name
@@ -52,32 +51,32 @@ FROM
 WHERE rn = 1
 ORDER BY emp_no;
 SELECT * FROM current_retiring_emp_w_title;</code></pre>
-'''
+
 
 #### 3: Determine number of employees retiring by title
 Based on the results provided in part 2 above, it was then easy to perform another query where I grouped the employees by title and counted the number of employees with that title.  The below code was used to achieve this objective:
 
 --Table with number of Retiring Employees by Title
-SELECT title
+<pre><code>SELECT title
 	, COUNT(emp_no) AS Count_Retiring_Employees
 INTO number_retiring_by_title
 FROM retiring_emp_w_title_recent
 GROUP BY title;
-SELECT * FROM number_retiring_by_title; 
+SELECT * FROM number_retiring_by_title; </code></pre>
 
 #### 4:  Determine number of titles that were effected
 The final step of the process was to determine the number of titles that were going to be effected.  This was done simply by taking the results from the previous section and counting the number of titles that were present.  The below code was used to achive this objective:
 
 --Number of [titles] retiring
-SELECT COUNT(title) AS Number_Title_Retiring
+<pre><code>SELECT COUNT(title) AS Number_Title_Retiring
 INTO number_titles_retiring
-FROM number_retiring_by_title;
+FROM number_retiring_by_title;</code></pre>
 
 ### Deliverables 2:
 In this deliverable, the only objective was to identify those employees that would be able to participate in the mentorship program.  For this objective it was necessary to use the data tables, Employee and Titles.  The date ranges were provided, the only addition was to make sure that they were currently employeed, and to achieve that I selected that the title to_date would be '9999-01-01' indicating that they are currently in that  position.  The below code was used to compile the list of employees that could participate in the mentorship program.
 
 --Table of employees that are available for the mentorship role
-SELECT e.emp_no
+<pre><code>SELECT e.emp_no
 	, e.first_name
 	, e.last_name
 	, t.title
@@ -90,7 +89,7 @@ FROM employees AS e
 WHERE (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
 	AND t.to_date = '9999-01-01'
 ORDER BY e.emp_no;
-SELECT * FROM mentorship_eligibility;
+SELECT * FROM mentorship_eligibility;</code></pre>
 
 ## Results
 After the analysis above it was found that there were a total of 72,458 employees that would be retiring, below is how those employees were distributed over the 7 titles that were effected.
