@@ -12,9 +12,9 @@ The very first step before any of the delieverables could completed was to revie
 The first step was to create a table of current employees that are expected to retire in the near future and including their titles.  This was achieved by using the informaiton provided in three tables, the Employee, Title, and Salary tables.  This was accomplished by using the follow query:
 
 --Create table with retiring employees with title that are still employed
-SELECT e.emp_no
-	, e.first_name
-	, e.last_name
+<pre><code>SELECT e.emp_no
+    , e.first_name
+    , e.last_name
 	, t.title
 	, t.from_date
 	, s.salary
@@ -25,7 +25,7 @@ FROM employees AS e
 	INNER JOIN titles AS t
 		ON (e.emp_no = t.emp_no)
 WHERE (e.birth_date BETWEEN '1952-01-01' AND '1955-12-31')
-ORDER BY e.emp_no;
+ORDER BY e.emp_no;</code></pre>
 
 #### 2:  Remove all extra positions that an employee had and only display their current title
 With a quick overview of the results from step 1, it was clear that employees were showing up on the list more than once.  The reason is that the titles table included previous titles and not just their most recient one.  It was necessary to order the titles by the from_date with the most recent date first, and then for only that title be included in the final table.  To make this possible, it was necessary to partition the list by the employee number and selct the first occurance.  The code was used to achive this objective.
