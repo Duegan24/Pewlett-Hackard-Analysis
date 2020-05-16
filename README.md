@@ -32,7 +32,7 @@ With a quick overview of the results from step 1, it was clear that employees we
 
 --Create table with only the most recent titles
 '''sql
-SELECT emp_no
+<pre><code>SELECT emp_no
 	, first_name
 	, last_name
 	, title
@@ -51,7 +51,7 @@ FROM
 	FROM retiring_emp_w_title) AS tmp
 WHERE rn = 1
 ORDER BY emp_no;
-SELECT * FROM current_retiring_emp_w_title;
+SELECT * FROM current_retiring_emp_w_title;</code></pre>
 '''
 
 #### 3: Determine number of employees retiring by title
