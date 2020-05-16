@@ -91,10 +91,19 @@ ORDER BY e.emp_no;
 SELECT * FROM mentorship_eligibility;
 
 ## Results
-After the analysis above it was found that there were a total of 72,458 employees that would be retiring 
+After the analysis above it was found that there were a total of 72,458 employees that would be retiring, below is how those employees were distributed over the 7 titles that were effected.
 
-|  | Total Rides | Total Drivers | Total Fares | Average Fares per Ride | Average Fares per Driver |
-| --- | --- | --- | --- | --- | --- |
-|Rural | 125 | 78 | $4,327.93 | $34.62 | $55.49 |
-|Suburban | 625 | 490 | $19,356.33 | $30.97 | $39.50 |
-|Urban | 1,625 | 2,405 | $39,854.38 | $24.53 | $16.57 |
+| Title | Count of Retiring Employees|
+| --- | --- |
+| Engineer | 9,285 |
+| Senior Engineer | 25,916 |
+| Manager | 2 |
+| Assistant Engineer | 1,090 |
+| Staff | 7,636 |
+| Senior Staff | 24,926 |
+| Technique Leader | 3,603 |
+
+The final step was to identify the number of employees that could participate in the mentorship program.  There were a total of 1,549 current employees that are of the appropriate age.  
+
+### Next Steps
+Now that the mentorship list has been generated the next step is to evaluate which titles those employees can start training for.  In some cases the positions that will be vacated by retiring employees do not need speciallized training; however, for those that do it will be important to evaluate which personnel would be best suited to train for those positions.  
